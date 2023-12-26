@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+</head>
+<body>
+    <h1 style="text-align: center;">SignUp Form</h1>
+    <form style="text-align: center; margin-left: 40%; margin-top: 15%; font-size: larger;" action="/signup" method="POST">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="number" name="phone"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>
+                    <input type="radio" name="role" id="admin" value="admin"><label for="admin">Admin</label>
+                    <input type="radio" name="role" id="customer" value="customer"><label for="customer">Customer</label>
+                </td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <th>Confirm Password</th>
+                <td><input type="password" name="cpassword"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
