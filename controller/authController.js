@@ -75,7 +75,7 @@ const Signin = async(req,res) =>{
                 res.status(200).send({"message" : "User Login Successfully"})
             }
             else{
-                res.status(400).send({"error" : "Password does not Match"})
+                res.status(400).send({"error" : "Incorrect Passsword"})
             }
         }
         else{

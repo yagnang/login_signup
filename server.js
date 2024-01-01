@@ -20,3 +20,5 @@ PORT = process.env.PORT
 app.listen(PORT,()=>{
     console.log(`PORT SUCCESSFULLY CONNNECTED TO ${PORT}`);
 })
+
+module.exports = app

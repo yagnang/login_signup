@@ -9,14 +9,16 @@ const signupvalidation = (req, res, next) => {
         'string.empty': 'Name cannot be empty.',
       }),
       phone: Joi.number().integer().required().messages({
-        'any.required': 'Phone number is required.',
-        'number.base': 'Phone must be a number.',
-        'number.integer': 'Phone must be an integer.',
-      }),
-      email: Joi.string().email({ minDomainSegments: 2, tlds: ['com', 'in'] }).required().messages({
+        'any.required': 'Field is required.',
+        'number.empty': 'Field must be filled',
+        'number.base': 'Field must be a number.',
+        'number.integer': 'Field must be an integer.',
+        
+    }),
+      email: Joi.string().email({ minDomainSegments: 2, tlds: { allow : ['com', 'in'] } }).required().messages({
         'any.required': 'Email is required.',
         'string.email': 'Invalid email format.',
-      }),
+    }),
       role: Joi.string().valid('admin', 'customer').required().messages({
         'any.required': 'Role is required.',
         'any.only': 'Invalid role. It must be either "admin" or "customer".',
@@ -26,6 +28,7 @@ const signupvalidation = (req, res, next) => {
         'string.pattern.base': 'Password must contain at least one digit, one lowercase and one uppercase letter, and be at least 8 characters long.',
       }),
       cpassword: Joi.string().valid(Joi.ref('password')).required().messages({
+        'any.required': 'Confirm Password is required.',
         'any.only': 'Passwords do not match.',
       }),
     });
@@ -44,10 +47,11 @@ const signupvalidation = (req, res, next) => {
     const schema = Joi.object({
         email: Joi.string().email({ minDomainSegments: 2, tlds: { allow : ['com', 'in'] } }).required().messages({
             'any.required': 'Email is required.',
-            'string.email': 'Invalid email format. Please provide a valid email address with at least two domain segments and one valid top-level domain (TLD), such as .com or .in.',
+            'string.email': 'Invalid email format.',
         }),
-        password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/).messages({
-            'string.pattern.base': 'Password must contain at least one digit, one lowercase and one uppercase letter, and be at least 8 characters long.',
+        password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/).required().messages({
+          'any.required': 'Password is required.',  
+          'string.pattern.base': 'Invalid Password',
         }),
     });
 
